@@ -11,9 +11,9 @@ for at least 1 of the numbers.a.Which number is bigger?b.By how much is it bigge
 func main() {
 	var number1 int
 	var number2 int
-	fmt.Println("Please key in first number")
+	fmt.Println("Please key in the first number")
 	fmt.Scanln(&number1)
-	fmt.Println("Please key in a second number.")
+	fmt.Println("Please key in the second number.")
 	fmt.Scanln(&number2)
 
 	//Insert your code here
