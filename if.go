@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"strconv"
 )
 
 /*1.Given the numbers is 17 and 24 and using preceding conditionals
@@ -12,35 +13,35 @@ func main() {
 	var number1 int
 	var number2 int
 	fmt.Println("Please key in the first number")
-	fmt.Scanln(&number1)
+	_, _ = fmt.Scanln(&number1)
 	fmt.Println("Please key in the second number.")
-	fmt.Scanln(&number2)
+	_, _ = fmt.Scanln(&number2)
 
 	//Insert your code here
-	err := numberCheck(number1, number2)
+	message, err := numberCheck(number1, number2)
 	if err != nil {
 		log.Fatal(err)
 	}
-
+	fmt.Println(message)
 	//Hint: You may wish to make use of strconv.Itoa to convert int to string
 
 }
 
-func numberCheck(number1, number2 int) error {
+func numberCheck(number1, number2 int) (string, error) {
 	if number1 == number2 {
-		fmt.Printf("First number %v is equal to second number %v", number1, number2)
-		return nil
+		message := "First number " + strconv.Itoa(number1) + " is equal to second number " + strconv.Itoa(number2)
+		return message, nil
 	}
 	if number1 > number2 {
 		diff := number1 - number2
-		fmt.Printf("First number %v is greater than %v by %v", number1, number2, diff)
-		return nil
+		message := "First number " + strconv.Itoa(number1) + " is greater than second number " + strconv.Itoa(number2) + " by " + strconv.Itoa(diff)
+		return message, nil
 	}
 	if number1 < number2 {
 		diff := number2 - number1
-		fmt.Printf("First number %v is smaller than %v by %v", number1, number2, diff)
-		return nil
+		message := "First number " + strconv.Itoa(number1) + " is smaller than second number " + strconv.Itoa(number2) + " by " + strconv.Itoa(diff)
+		return message, nil
 	} else {
-		return errors.New("Something went wrong!")
+		return "", errors.New("something went wrong")
 	}
 }
